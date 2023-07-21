@@ -1,3 +1,5 @@
+#virtual env name 3d_printing
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
