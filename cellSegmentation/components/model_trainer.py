@@ -30,8 +30,12 @@ class ModelTrainer:
 
 
             os.makedirs(self.model_trainer_config.model_trainer_dir, exist_ok=True)
-            os.system(f"copy runs/detect/train/weights/best.pt {self.model_trainer_config.model_trainer_dir}/")
-           
+            os.system(f"cp runs/detect/train/weights/best.pt {self.model_trainer_config.model_trainer_dir}/")
+
+            model_trainer_artifact = ModelTrainerArtifact(
+                trained_model_file_path="artifacts/model_trainer/best.pt",
+            )
+
             os.system("rm -rf yolov8s.pt")
             os.system("rm -rf train")
             os.system("rm -rf valid")
@@ -39,9 +43,7 @@ class ModelTrainer:
             os.system("rm -rf data.yaml")
             os.system("rm -rf runs")
 
-            model_trainer_artifact = ModelTrainerArtifact(
-                trained_model_file_path="artifacts/model_trainer/best.pt",
-            )
+
 
             logging.info("Exited initiate_model_trainer method of ModelTrainer class")
             logging.info(f"Model trainer artifact: {model_trainer_artifact}")
